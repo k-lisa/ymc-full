@@ -3,10 +3,10 @@
 
     angular
         .module(ymcGlobals.appName)
-        .factory('languageService', ethnicityService);
+        .factory('languageService', languageService);
     ethnicityService.$inject = ['$http', '$q', 'baseCrudService'];
 
-    function ethnicityService($http, $q, baseCrudService) {
+    function languageService($http, $q, baseCrudService) {
         const apiUrl = "/api/language";
         return {
             getAll: _getAll,
