@@ -1,0 +1,619 @@
+﻿<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YMC</title>
+    <base href="/admin/" />
+
+    <!-- Vendor CSS -->
+    <link rel="shortcut icon" href="http://youthmentoring.org/wp-content/uploads/2015/08/favicon11.ico" type="image/x-icon" />
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/mediaelement/build/mediaelementplayer.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="/Theme/MaterialAdmin/css/app_1.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/css/app_2.min.css" rel="stylesheet">
+    <link href="/Theme/MaterialAdmin/css/datetimepicker.css" rel="stylesheet" />
+
+    <link href="/Content/MaterialAdmin.css" rel="stylesheet" />
+	
+    <!-- Style Tags go here -->
+
+
+    <link href="/Content/ui-cropper.css" rel="stylesheet" />
+
+    <link href="/Content/xeditable.css" rel="stylesheet" />
+    <link href="/Content/angular-date-picker.css" rel="stylesheet" />
+    <link href="/Content/summernote.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/britecharts/dist/css/britecharts.min.css" type="text/css" />
+
+    <link href="/Content/Site.css" rel="stylesheet" />
+</head>
+<body data-ng-app="ymcApp" ng-controller="layoutController as layoutVm" ui-tour ng-cloak>
+    <header id="header" class="clearfix" data-ma-theme="blue">
+        <ul class="h-inner">
+            <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+
+            <!-- Use this for Text -->
+            <li class="hi-logo hidden-xs">
+                <a href="index.html">Youth Mentoring Connection</a>
+                <!--<button type="button" btn btn-default style="cursor: pointer" ng-click="vm.startTour()">Start Tour</button>-->
+            </li>
+            
+
+            <!--Use this for image-->
+            <!--<li class="hidden-xs">
+                <a href="index.html" class="m-l-10">
+                    <img src="/Content/img/YmcLogo.png" alt="" style="height: 50px; overflow: visible;">
+                </a>
+            </li>-->
+
+            <li class="pull-right">
+                <ul class="hi-menu">
+                    <li class="dropdown hidden">
+                        <a data-toggle="dropdown" href="">
+                            <i class="him-icon zmdi zmdi-email"></i>
+                            <i class="him-counts">0</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="list-group">
+                                <div class="lg-header">
+                                    Messages
+                                </div>
+                                <div class="lg-body">
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <!-- <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/1.jpg" alt=""> -->
+                                            <img class="lgi-img" src="/Content/img/Tony214x300.jpg" alt="Tony LoRe" />
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">David Belle</div>
+                                            <small class="lgi-text">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/2.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Jonathan Morris</div>
+                                            <small class="lgi-text">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/3.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Fredric Mitchell Jr.</div>
+                                            <small class="lgi-text">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/4.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Glenn Jecobs</div>
+                                            <small class="lgi-text">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/4.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Bill Phillips</div>
+                                            <small class="lgi-text">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a class="view-more" href="">View All</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown hidden">
+                        <a data-toggle="dropdown" href="">
+                            <i class="him-icon zmdi zmdi-notifications"></i>
+                            <i class="him-counts">0</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg pull-right">
+                            <div class="list-group him-notification">
+                                <div class="lg-header">
+                                    Notification
+
+                                    <ul class="actions">
+                                        <li class="dropdown">
+                                            <a href="" data-ma-action="clear-notification">
+                                                <i class="zmdi zmdi-check-all"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="lg-body">
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/1.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">David Belle</div>
+                                            <small class="lgi-text">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/2.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Jonathan Morris</div>
+                                            <small class="lgi-text">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/3.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Fredric Mitchell Jr.</div>
+                                            <small class="lgi-text">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/4.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Glenn Jecobs</div>
+                                            <small class="lgi-text">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/4.jpg" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">Bill Phillips</div>
+                                            <small class="lgi-text">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <a class="view-more" href="">View Previous</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown ">
+                        <a data-toggle="dropdown" href="" ng-click="layoutVm.loadActionItems()">
+                            <i class="him-icon zmdi zmdi-view-list-alt"></i>
+                            <i class="him-counts" ng-bind="layoutVm.items.length" ng-show="layoutVm.items.length> 0"></i>
+                        </a>
+                        <div class="dropdown-menu pull-right dropdown-menu-lg">
+                            <div class="list-group">
+                                <div class="lg-header">
+                                    Pending Action Items
+                                </div>
+                                <div class="lg-body">
+                                    <a href="" class="list-group-item" data-toggle="tooltip" ng-repeat="x in layoutVm.items | limitTo:8">
+                                        <div ui-sref="actionItems({id:x.id})" title="Edit This Action Item" class="text-primary row">
+                                            <span class="pull-left">{{x.name}}
+                                                <span class="text-danger"> &nbsp;{{x.dueDate| date : 'shortDate'}}</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a class="view-more" ui-sref="actionItems({id:null})">View All</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown hidden">
+                        <a data-toggle="dropdown" href=""><i class="him-icon zmdi zmdi-more-vert"></i></a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                            <li class="skin-switch hidden-xs">
+                                <span class="ss-skin bgm-lightblue" data-ma-action="change-skin" data-ma-skin="lightblue"></span>
+                                <span class="ss-skin bgm-bluegray" data-ma-action="change-skin" data-ma-skin="bluegray"></span>
+                                <span class="ss-skin bgm-cyan" data-ma-action="change-skin" data-ma-skin="cyan"></span>
+                                <span class="ss-skin bgm-teal" data-ma-action="change-skin" data-ma-skin="teal"></span>
+                                <span class="ss-skin bgm-orange" data-ma-action="change-skin" data-ma-skin="orange"></span>
+                                <span class="ss-skin bgm-blue" data-ma-action="change-skin" data-ma-skin="blue"></span>
+                            </li>
+                            <li class="divider hidden-xs"></li>
+                            <li class="hidden-xs">
+                                <a data-ma-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>
+                            </li>
+                            <li>
+                                <a data-ma-action="clear-localstorage" href=""><i class="zmdi zmdi-delete"></i> Clear Local Storage</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-face"></i> Privacy Settings</a>
+                            </li>
+                            <li>
+                                <a href=""><i class="zmdi zmdi-settings"></i> Other Settings</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hidden ma-trigger" data-ma-action="sidebar-open" data-ma-target="#chat">
+                        <a href=""><i class="him-icon zmdi zmdi-comment-alt-text"></i></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Top Search Content -->
+        <div class="h-search-wrap">
+            <div class="hsw-inner">
+                <i class="hsw-close zmdi zmdi-arrow-left" data-ma-action="search-close"></i>
+                <input type="text">
+            </div>
+        </div>
+    </header>
+
+    <section id="main">
+        <aside id="sidebar" class="sidebar c-overflow">
+            <div class="s-profile" ng-show="layoutVm.currentUser">
+                <a href="" data-ma-action="profile-menu-toggle">
+                    <div class="sp-pic">
+                        <img ng-src="{{layoutVm.currentUser.photoUrl}}" />
+                    </div>
+
+                    <div class="sp-info" ng-bind="layoutVm.currentUser.firstName + ' ' +layoutVm.currentUser.lastName">
+                    </div>
+                </a>
+            </div>
+
+            <ul class="main-menu">
+                <li>
+                    <a style="cursor: pointer" ng-click="layoutVm.goToMyHome()" ui-sref-active="active"><i class="zmdi zmdi-home"></i> Home</a>
+                </li>
+                <li>
+                    <a ng-click="layoutVm.goToMyProfile()" href="" ui-sref-active="active"><i class="zmdi zmdi-account"></i>My Profile</a>
+                </li>
+                <li>
+                    <a ng-click="layoutVm.logout()" href="" ui-sref-active="active"><i class="zmdi zmdi-time-restore"></i>Logout</a>
+                </li>
+                <li class="sub-menu active toggled" ng-show="layoutVm.IsStaff">
+                    <a href="" data-ma-action="submenu-toggle" tour-step tour-step-title="DashBoards" tour-step-content="Navigate the site using this dashboard." tour-step-order="0" tour-step-placement="right"><i class="zmdi zmdi-chart"></i> Dashboards</a>
+                    <ul>
+                        <li>
+                            <a class="active" data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="programs" ui-sref-active="active">Programs</a>
+                        </li>
+                        <li>
+                            <a class="active" data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="sessions" ui-sref-active="active">Sessions</a>
+                        </li>
+                        <li>
+                            <a class="active" data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="actionItems" ui-sref-active="active">Action Items</a>
+                        </li>
+                        <li>
+                            <a class="active" data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="doThings" ui-sref-active="active">Things to Do</a>
+                        </li>
+                        <li>
+                            <a class="active" data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="personList" ui-sref-active="active">People</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu active toggled" ng-show="layoutVm.IsAdmin">
+                    <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-widgets"></i>Admin</a>
+                    <ul>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="activities" ui-sref-active="active">Activities</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="companies" ui-sref-active="active">Companies</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="fileUploads" ui-sref-active="active">Mentee/Mentor Bulk Upload</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="educationLevels" ui-sref-active="active">Education Level</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="equipments" ui-sref-active="active">Equipment</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="ethnicities" ui-sref-active="active">Ethnicities</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="interests" ui-sref-active="active">Interests</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="languages" ui-sref-active="active">Languages</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="offices" ui-sref-active="active">Offices</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="personalities" ui-sref-active="active">Personalities</a>
+                        </li>
+                        <!--<li>
+                            <a ui-sref="programStaff({id: 3})" ui-sref-active="active">Program Staff</a>
+                        </li>-->
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="roles" ui-sref-active="active">Roles</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="personRoles" ui-sref-active="active">User Roles</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="schools" ui-sref-active="active">Schools</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="sessionTypes" ui-sref-active="active">Session Types</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="manageSurveys" ui-sref-active="active">Surveys</a>
+                        </li>
+                        <li>
+                            <a cdata-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="doThingLocations" ui-sref-active="active">Things to Do - Locations</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="doThingCategories" ui-sref-active="active">Things to Do - Categories</a>
+                        </li>
+                        <li>
+                        <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                           ui-sref="checklistCategories" ui-sref-active="active"> Checklist Categories</a>
+                        </li>
+                        <li>
+                        <a ui-sref="checklists" ui-sref-active="active">Checklist</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="sub-menu active toggled" ng-show="layoutVm.IsAdmin">
+                    <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-chart"></i> Test Pages</a>
+                    <ul>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="directiveHosts"  ui-sref-active="active">Directive Host Page</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="sms"  ui-sref-active="active">Sms Service</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="emails"  ui-sref-active="active">Emails</a>
+                        </li>
+                        <li>
+                            <a data-ma-action="sidebar-close" data-ma-target="#sidebar" 
+                               ui-sref="directions"  ui-sref-active="active">Directions</a>
+                        </li>
+                        <!--<li>
+                            <a class="active" ui-sref="inAppChat">Chat</a>
+                        </li>-->
+
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+
+
+
+        <aside id="chat" class="sidebar">
+
+            <div class="chat-search">
+                <div class="fg-line">
+                    <input type="text" class="form-control" placeholder="Search People">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+            </div>
+
+            <div class="lg-body c-overflow">
+                <div class="list-group">
+                    <a class="list-group-item media" href="">
+                        <div class="pull-left p-relative">
+                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/2.jpg" alt="">
+                            <i class="chat-status-busy"></i>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Jonathan Morris</div>
+                            <small class="lgi-text">Available</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media" href="">
+                        <div class="pull-left">
+                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/1.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">David Belle</div>
+                            <small class="lgi-text">Last seen 3 hours ago</small>
+                        </div>
+                    </a>
+                    <a class="list-group-item media" href="">
+                        <div class="pull-left p-relative">
+                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/3.jpg" alt="">
+                            <i class="chat-status-online"></i>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Fredric Mitchell Jr.</div>
+                            <small class="lgi-text">Availble</small>
+                        </div>
+                    </a>
+                    <a class="list-group-item media" href="">
+                        <div class="pull-left p-relative">
+                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/4.jpg" alt="">
+                            <i class="chat-status-online"></i>
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Glenn Jecobs</div>
+                            <small class="lgi-text">Availble</small>
+                        </div>
+                    </a>
+                    <a class="list-group-item media" href="">
+                        <div class="pull-left">
+                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/5.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Bill Phillips</div>
+                            <small class="lgi-text">Last seen 3 days ago</small>
+                        </div>
+                    </a>
+                    <a class="list-group-item media" href="">
+                        <div class="pull-left">
+                            <img class="lgi-img" src="/Theme/MaterialAdmin/img/demo/profile-pics/6.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Wendy Mitchell</div>
+                            <small class="lgi-text">Last seen 2 minutes ago</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <section id="content">
+            <div class="container">
+
+                <div>
+                    <ui-view></ui-view>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <footer id="footer">
+        Copyright &copy; 2017 Ymc.LA
+
+        <ul class="f-menu">
+            <li>
+                <a href="">Home</a>
+            </li>
+            <li>
+                <a href="">Dashboard</a>
+            </li>
+            <li>
+                <a href="">Reports</a>
+            </li>
+            <li>
+                <a href="">Support</a>
+            </li>
+        </ul>
+    </footer>
+
+    <!-- Page Loader
+    <div class="page-loader">
+        <div class="preloader pls-blue">
+            <svg class="pl-circular" viewBox="25 25 50 50">
+                <circle class="plc-path" cx="50" cy="50" r="20" />
+            </svg>
+
+            <p>Please wait...</p>
+        </div>
+    </div>
+
+    <!-- Javascript Libraries from THEME -->
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/Waves/dist/waves.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/moment/moment.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/autosize/dist/autosize.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/mediaelement/build/mediaelement-and-player.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/Theme/MaterialAdmin/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build\js\bootstrap-datetimepicker.min.js"></script>
+    
+
+    <!--Script that runs various theme widgit initialization functions-->
+    <script src="/Theme/MaterialAdmin/js/app.js"></script>
+
+    <!-- General Javascript Libraries (Not Angular) -->
+    <script src="/Scripts/moment-with-locales.min.js"></script>
+    <script src="/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src='/signalr/hubs'></script>
+    <script src="/Scripts/underscore.js"></script>
+    <script src="/Scripts/summernote.js"></script>
+
+    <!-- HTML to PDF required scripts-->
+    <script src="/Scripts/html2canvas.js"></script>
+    <script src="/Scripts/pdfmake.min.js"></script>
+    <script src="/Scripts/vfs_fonts.js"></script>
+
+    <script>
+        var ymcGlobals = {
+            appName: 'ymcApp'
+        }
+    </script>
+
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/angular-ui-router-1.0.3.js"></script>
+
+    <!-- Angular libraries -->
+    <script src="/Scripts/angular-date-picker.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="/Scripts/angular-touch.js"></script>
+    <script src="/Scripts/angular-summernote.min.js"></script>
+    <script src="/Scripts/ng-file-upload.min.js"></script>
+    <script src="/Scripts/datetimepicker.js"></script>
+    <script src="/Scripts/datetimepicker.templates.js"></script>
+    <script src="/Scripts/dateTimeInput.js"></script>
+
+    <script src="/Scripts/ui-cropper.js"></script>
+
+    <script src="/Scripts/ModalService.js"></script>
+    <script src="/Scripts/xeditable.js"></script>
+    <script src="/Scripts/calendar.js"></script>
+    <script src="/Scripts/ngPrint.min.js"></script>
+    <script src="/Scripts/angular-sanitize.min.js"></script>
+    <script src="/Scripts/ng-csv.min.js"></script>
+    <script src="/Scripts/ngDraggable.js"></script>
+
+    <script src="/Scripts/d3.min.js"></script>
+    <script src="/Scripts/britecharts.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>-->
+	<!--<script src="https://cdn.jsdelivr.net/npm/britecharts@2/dist/bundled/britecharts.min.js"></script>-->
+    <!--<script src="/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="/Scripts/angular-signalr-hub.min.js"></script>-->
+    <script src="/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="/Scripts/angular-signalr-hub.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <!-- google map api -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo0oh8x2fZt3DqxkECfRZwZuz_pFGEUck"></script>
+
+    <!-- the entire client side SPA JS Code -->
+    <script src="/Scripts/dest/admin/app.admin.js"></script>
+</body>
+</html>

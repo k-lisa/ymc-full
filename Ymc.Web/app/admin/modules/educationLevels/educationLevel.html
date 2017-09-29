@@ -1,0 +1,182 @@
+﻿
+
+<div class="block-header">
+    <h2>Education Level Form</h2>
+
+    <ul class="actions">
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-trending-up"></i>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="zmdi zmdi-check-all"></i>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a href="" data-toggle="dropdown">
+                <i class="zmdi zmdi-more-vert"></i>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="">Refresh</a>
+                </li>
+                <li>
+                    <a href="">Manage Widgets</a>
+                </li>
+                <li>
+                    <a href="">Widgets Settings</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+
+
+
+<div class="col-md-12">
+    <div>
+
+        <div class="col-sm-6">
+            <div class=" card list-group lg-odd-black">
+                <div class="card-header action-header clearfix bgm-blue">
+                    <div class="ah-label hidden-xs">
+                        <h2>
+                            Education Levels:
+                        </h2>
+                    </div>
+                    <!-- Add Button -->
+                    <ul class="actions">
+                        <!-- Add Button -->
+                        <li>
+                            <a href="">
+                                <i class="zmdi zmdi-plus-circle-o" style="font-size:1.5em; color:white;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click to add a new eConguage" data-ng-click="eCon.addForm()"></i>
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+                <!-- list heading: code, type -->
+                <div class="list-group-item media">
+                    <div class="pull-left text-primary"> Code &nbsp;&nbsp;</div>
+                    <div class="text-primary">Type</div>
+                </div>
+
+
+                <div class="list-group-item media" data-ng-repeat="item in eCon.items | orderBy: 'displayOrder'">
+                    <!-- 3 dots: edit / delete -->
+                    <div class="pull-right">
+                        <div class="actions dropdown">
+                            <a href="" data-toggle="dropdown" aria-expanded="false">
+                                <i class="zmdi zmdi-more-vert"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="" data-ng-click="eCon.select(item)">Edit</a>
+                                </li>
+                                <li>
+                                    <a href="" data-ng-click="eCon.delete(item)">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pull-left">
+                        <div class="lgi-heading">&nbsp;&nbsp;{{item.code}}&nbsp;&nbsp;&nbsp;&nbsp;-</div>
+                    </div>
+                    <div class="media-body">
+                        <a href="">
+                            <div class="lgi-heading">{{item.levelOfEducation}}</div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" ng-show="eCon.showForm == false">
+
+            <div class="card">
+                <div class="card-header bgm-blue">
+                    <h2>
+                        Create / Edit Level Of Education
+                    </h2>
+                </div>
+
+                <div class="card-body card-padding">
+
+                    <form name="eCon.createEditForm" novalidate>
+
+                        <!-- field: eConguage code -->
+                        <div class="form-group" ng-class="{'has-error': eCon.createEditForm.codeControl.$invalid && (eCon.createEditForm.$submitted || eCon.createEditForm.codeControl.$touched)}">
+                            <div class="fg-line">
+                                <label class="fg-label text-primary">Education Code:</label>
+                                <input type="text" class="form-control" name="codeControl" required placeholder="eg: BA" ng-minlength="2" ng-maxlength="2" data-ng-model="eCon.item.code" ng-required="true">
+                            </div>
+                            <div ng-show="eCon.createEditForm.$submitted || eCon.createEditForm.codeControl.$touched">
+                                <div ng-show="eCon.createEditForm.codeControl.$error.required" class="help-block">
+                                    Education Code is required.
+                                </div>
+                                <div ng-show="eCon.createEditForm.codeControl.$error.maxlength || eCon.createEditForm.codeControl.$error.minlength" class="help-block">Education Code accepts 2 characters only.</div>
+                            </div>
+                        </div>
+
+                        <!-- field: eConguage name -->
+                        <div class="form-group" ng-class="{'has-error': eCon.createEditForm.levelOfEducation.$invalid && (eCon.createEditForm.$submitted || eCon.createEditForm.levelOfEducation.$touched)}">
+                            <div class="fg-line">
+                                <label class="fg-label text-primary">Education Level:</label>
+                                <input type="text" class="form-control" name="levelOfEducation" placeholder="eg: Bachelors" data-ng-model="eCon.item.levelOfEducation" ng-required="true">
+
+                            </div>
+                            <div ng-show="eCon.createEditForm.$submitted || eCon.createEditForm.levelOfEducation.$touched">
+                                <div ng-show="eCon.createEditForm.levelOfEducation.$error.required" class="help-block">eConguage Name is required.</div>
+                            </div>
+                        </div>
+
+                        <!-- field: Display Order -->
+                        <div class="form-group" ng-class="{'has-error':  (eCon.createEditForm.displayOrder.$touched || eCon.createEditForm.$submitted) && eCon.createEditForm.displayOrder.$invalid}">
+                            <div class="fg-line">
+                                <label class="fg-label text-primary">Display Order:</label>
+                                <input type="number" class="form-control" name="displayOrder" placeholder="eg: 1" data-ng-model="eCon.item.displayOrder" ng-required="true">
+                            </div>
+                            <div ng-show="eCon.createEditForm.$submitted || eCon.createEditForm.displayOrder.$touched">
+                                <div ng-show="eCon.createEditForm.displayOrder.$error.required" class="help-block">Display Order is required.</div>
+
+                            </div>
+                        </div>
+
+                        <!-- active or inactive -->
+                        <p class="c-black f-500 m-b-20 m-t-20">
+                            Inactive ? &nbsp; &nbsp;
+                            <label class="radio radio-inline m-r-20">
+                                <input type="radio" name="inlineRadioOptions" data-ng-model="eCon.item.inactive" ng-required="!inlineRadioOption" ng-value=true>
+                                <i class="input-helper"></i>
+                                Yes
+                            </label>
+
+                            <label class="radio radio-inline m-r-20">
+                                <input type="radio" name="inlineRadioOptions" data-ng-model="eCon.item.inactive" ng-required="!inlineRadioOption" ng-value=false>
+                                <i class="input-helper"></i>
+                                No
+                            </label>
+
+                        </p>
+
+                        <br /><br />
+                        <div class="text-center">
+                            <button class="btn btn-{{eCon.buttonStyle}} waves-effect " ng-click="eCon.postUpdateEducation()">{{eCon.buttonText}}</button>&nbsp;&nbsp;
+                            <button class="btn btn-default waves-effect" data-ng-click="eCon.cancel()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

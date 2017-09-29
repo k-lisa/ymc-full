@@ -1,0 +1,153 @@
+﻿<div>
+    <div class="block-header">
+        <h2>Languages</h2>
+    </div>
+
+    <div class="col-md-12">
+        <div >
+
+            <div class="col-sm-6">
+                <div class=" card list-group lg-odd-black">
+                    <div class="card-header action-header clearfix bgm-blue">
+                        <div class="ah-label hidden-xs">
+                            <h2>
+                                List of Languages:
+                            </h2>
+                        </div>
+                        <!-- Add Button -->
+                        <ul class="actions">
+                            <!-- Add Button -->
+                            <li>
+                                <a href="">
+                                    <i class="zmdi zmdi-plus-circle-o" style="font-size:1.5em; color:white;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click to add a new Language" data-ng-click="lan.addForm()"></i>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+
+                    <!-- list heading: code, type -->
+                    <div class="list-group-item media">
+                        <div class="pull-left text-primary"> Code &nbsp;&nbsp;</div>
+                        <div class="text-primary">Type</div>
+                    </div>
+
+
+                    <div class="list-group-item media" data-ng-repeat="item in lan.items | orderBy: 'displayOrder'">
+                        <!-- 3 dots: edit / delete -->
+                        <div class="pull-right">
+                            <div class="actions dropdown">
+                                <a href="" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="zmdi zmdi-more-vert"></i>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="" data-ng-click="lan.select(item)">Edit</a>
+                                    </li>
+                                    <li>
+                                        <a href="" data-ng-click="lan.delete(item)">Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pull-left">
+                            <div class="lgi-heading">&nbsp;&nbsp;{{item.code}}&nbsp;&nbsp;&nbsp;&nbsp;-</div>
+                        </div>
+                        <div class="media-body">
+                            <a href="">
+                                <div class="lgi-heading">{{item.name}}</div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" ng-show="lan.showForm == false">
+
+                <div class="card">
+                    <div class="card-header bgm-blue">
+                        <h2>
+                            Create / Edit Language
+                        </h2>
+                    </div>
+
+                    <div class="card-body card-padding">
+
+                        <form name="lan.createEditForm" novalidate>
+
+                            <!-- field: language code -->
+                            <div class="form-group" ng-class="{'has-error': lan.createEditForm.codeControl.$invalid && (lan.createEditForm.$submitted || lan.createEditForm.codeControl.$touched)}">
+                                <div class="fg-line">
+                                    <label class="fg-label text-primary">Language Code:</label>
+                                    <input type="text" class="form-control" name="codeControl" placeholder="eg: En" ng-minlength="2" ng-maxlength="2" data-ng-model="lan.item.code" ng-required="true">
+
+                                </div>
+                                <div ng-show="lan.createEditForm.$submitted || lan.createEditForm.codeControl.$touched">
+                                    <div ng-show="lan.createEditForm.codeControl.$error.required" class="help-block">Language Code is required.</div>
+                                    <div ng-show="lan.createEditForm.codeControl.$error.maxlength || lan.createEditForm.codeControl.$error.minlength" class="help-block">Language Code accepts 2 characters only</div>
+                                </div>
+                            </div>
+
+                            <!-- field: language name -->
+                            <div class="form-group" ng-class="{'has-error': lan.createEditForm.name.$invalid && (lan.createEditForm.$submitted || lan.createEditForm.name.$touched)}">
+                                <div class="fg-line">
+                                    <label class="fg-label text-primary">Language Name:</label>
+                                    <input type="text" class="form-control" name="name" placeholder="eg: English" data-ng-model="lan.item.name" ng-required="true">
+
+                                </div>
+                                <div ng-show="lan.createEditForm.$submitted || lan.createEditForm.name.$touched">
+                                    <div ng-show="lan.createEditForm.name.$error.required" class="help-block">Language Name is required.</div>
+                                </div>
+                            </div>
+
+                            <!-- field: Display Order -->
+                            <div class="form-group" ng-class="{'has-error':  (lan.createEditForm.displayOrder.$touched || lan.createEditForm.$submitted) && lan.createEditForm.displayOrder.$invalid}">
+                                <div class="fg-line">
+                                    <label class="fg-label text-primary">Display Order:</label>
+                                    <input type="number" class="form-control" name="displayOrder" placeholder="eg: 1" data-ng-model="lan.item.displayOrder" ng-required="true">
+                                </div>
+                                <div ng-show="lan.createEditForm.$submitted || lan.createEditForm.displayOrder.$touched">
+                                    <div ng-show="lan.createEditForm.displayOrder.$error.required" class="help-block">Display Order is required.</div>
+
+                                </div>
+                            </div>
+
+                            <!-- active or inactive -->
+                            <p class="c-black f-500 m-b-20 m-t-20" ng-class="{'has-error': lan.createEditForm.inlineRadioOptions.$invalid &&(lan.createEditForm.$touched || lan.createEditForm.$submitted)}">
+                                Inactive ? &nbsp; &nbsp;
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" name="inlineRadioOptions" data-ng-model="lan.item.inactive" ng-required="!inlineRadioOption" ng-value=true>
+                                    <i class="input-helper"></i>
+                                    Yes
+                                </label>
+
+                                <label class="radio radio-inline m-r-20">
+                                    <input type="radio" name="inlineRadioOptions" data-ng-model="lan.item.inactive" ng-required="!inlineRadioOption" ng-value=false>
+                                    <i class="input-helper"></i>
+                                    No
+                                </label>
+
+                            </p>
+
+                            <br /><br />
+                            <div class="text-center">
+                                <button class="btn btn-{{lan.buttonStyle}} waves-effect " ng-click="lan.postUpdateLanguage()">{{lan.buttonText}}</button>&nbsp;&nbsp;
+                                <button class="btn btn-default waves-effect" data-ng-click="lan.cancel()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

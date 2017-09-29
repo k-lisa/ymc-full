@@ -1,0 +1,197 @@
+﻿<div class="login-content" id="accountLoginRegistration" data-ma-theme="lightgrey">
+    <!-- Login -->
+    <div class="lc-block toggled" id="l-login">
+        <div class="card-header clearfix bgm-blue">
+            <h3 class="loginRegistrationHeader">
+                LOGIN
+            </h3>
+        </div>
+        <form name="ac.loginForm" novalidate ng-submit>
+            <div class="lcb-form">
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.loginForm.loginEmail.$invalid && (ac.loginForm.$submitted || ac.loginForm.loginEmail.$touched)}">
+                        <input type="text" name="loginEmail" ng-model="ac.loginEmail" class="form-control" placeholder="Email Address" required>
+                        <div ng-show="ac.loginForm.$submitted || ac.loginForm.loginEmail.$touched">
+                            <div ng-show="ac.loginForm.loginEmail.$error.required" class="help-block">Email is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group m-b-20" style="padding-bottom:inherit">
+                    <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.loginForm.loginPassword.$invalid && (ac.loginForm.$submitted || ac.loginForm.loginPassword.$touched)}">
+                        <input type="password" class="form-control" name="loginPassword" ng-model="ac.loginPassword" placeholder="Password" required>
+                        <div ng-show="ac.loginForm.$submitted || ac.loginForm.loginPassword.$touched">
+                            <div ng-show="ac.loginForm.loginPassword.$error.required" class="help-block">Password is required.</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="ac.keepSignedIn">
+                        <i class="input-helper"></i>
+                        Keep me signed in
+                    </label>
+                </div>
+                <a href="" class="btn btn-login btn-success pull-right" style="z-index: 10" ng-click="ac.postLogin(ac.loginForm.$valid)">LOGIN</a>
+            </div>
+
+        </form>
+        <div class="lcb-navigation">
+            <a class="loginRegistrationButton" href="" data-ma-action="login-switch" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i> <span>Register</span></a>
+            <a class="loginRegistrationButton" href="" data-ma-action="login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>Forgot Password</span></a>
+        </div>
+    </div>
+
+    <!-- Register -->
+
+
+    <div class="lc-block" id="l-register">
+        <div class="card-header clearfix bgm-blue">
+            <h3 class="loginRegistrationHeader">
+                REGISTER
+            </h3>
+        </div>
+        <form name="ac.registerForm" ng-submit="ac.postRegister()" novalidate>
+            <div class="lcb-form">
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.registerForm.registerEmail.$invalid && (ac.registerForm.$submitted || ac.registerForm.registerEmail.$touched || ac.registerForm.registerEmail.$email)}">
+                        <input type="email" class="form-control"
+                               ng-model="ac.registerEmail" ng-blur="ac.checkEmail()" name="registerEmail" placeholder="Email Address" required>
+                        <div ng-show="ac.registerForm.$submitted || ac.registerForm.registerEmail.$touched || ac.registerForm.registerEmail.$email">
+                            <div ng-show="ac.registerForm.registerEmail.$error.required" class="help-block">Email is invalid.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="zmdi zmdi-face"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.registerForm.registerName.$invalid && (ac.registerForm.$submitted || ac.registerForm.registerName.$touched)}">
+                        <input type="text" class="form-control" name="registerName" ng-model="ac.registerName" placeholder="First Name" required>
+                        <div ng-show="ac.registerForm.$submitted || ac.registerForm.registerName.$touched">
+                            <div ng-show="ac.registerForm.registerName.$error.required" class="help-block">First Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="zmdi zmdi-face"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.registerForm.registerLastName.$invalid && (ac.registerForm.$submitted || ac.registerForm.registerLastName.$touched)}">
+                        <input type="text" class="form-control" ng-model="ac.registerLastName" name="registerLastName" placeholder="Last Name" required>
+                        <div ng-show="ac.registerForm.$submitted || ac.registerForm.registerLastName.$touched">
+                            <div ng-show="ac.registerForm.registerLastName.$error.required" class="help-block">Last Name is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="c-black f-500 m-b-20 m-t-20" ng-show="ac.showRoleOptions == true" ng-init="ac.roleOptions=77">
+                    I am a &nbsp; &nbsp;
+                    <label class="radio radio-inline m-r-20">
+                        <input type="radio" name="inlineRadioOptions" data-ng-model="ac.roleOptions" ng-required="!inlineRadioOption" ng-value="77">
+                        <i class="input-helper"></i>
+                        Mentee
+                    </label>
+
+                    <label class="radio radio-inline m-r-20">
+                        <input type="radio" name="inlineRadioOptions" data-ng-model="ac.roleOptions" ng-required="!inlineRadioOption" ng-value="78">
+                        <i class="input-helper"></i>
+                        Mentor
+                    </label>
+                </p>
+
+                <!--<div class="input-group m-b-20" id="registerMultiSelect">
+                    <span class="input-group-addon"><i class="zmdi zmdi-assignment-account"></i></span>
+                    <div class="select" ng-class="{'has-error': ac.registerForm.registerRoles.$invalid && (ac.registerForm.$submitted || ac.registerForm.registerRoles.$touched)}">
+                        <select name="registerRoles" ng-options="item.id as item.name for item in ac.items" class="selectpicker form-control dropDownRefresh" multiple="" title="Choose all roles that apply to you." ng-model="ac.registerRoles">
+                            <option value="{{item.id}}">
+                                {{item.name}}
+                            </option>
+                        </select>
+                        <div ng-show="ac.registerForm.$submitted || ac.registerForm.registerRoles.$touched">
+                            <div ng-show="ac.registerForm.registerRoles.$error.required" >
+                                <div class="help-block">Role is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.registerForm.registerPassword.$invalid && (ac.registerForm.$submitted || ac.registerForm.registerPassword.$touched)}">
+                        <input type="password" class="form-control" name="registerPassword" ng-minlength="6" ng-pattern="/[0-9]/" placeholder="Password" ng-model="ac.registerPassword" required>
+                        <div ng-show="ac.registerForm.$submitted || ac.registerForm.registerPassword.$touched">
+                            <div ng-show="ac.registerForm.registerPassword.$error.required" class="help-block">Password is required.</div>
+                            <div ng-show="ac.registerForm.registerPassword.$error.minlength || ac.registerForm.registerPassword.$error.pattern" class="help-block">Password must have at least 6 letters and 1 number.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group m-b-20 pull-right" style="padding-bottom: inherit;">
+                    <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                    <div class="fg-line" ng-class="{'has-error': ac.registerForm.registerPasswordConfirmation.$invalid && (ac.registerForm.$submitted || ac.registerForm.registerPasswordConfirmation.$touched)}">
+                        <input type="password" class="form-control" ng-model="ac.registerPasswordConfirmation" name="registerPasswordConfirmation" placeholder="Confirm Password" required>
+                        <div ng-show="ac.registerForm.$submitted || ac.registerForm.registerPasswordConfirmation.$touched">
+                            
+                           <div ng-show="ac.registerForm.registerPasswordConfirmation.$error.required" class="help-block">Confirm Password is required.</div>
+                            <div ng-show="ac.registerForm.registerPassword.$viewValue != ac.registerForm.registerPasswordConfirmation.$viewValue" class="help-block">
+                                Passwords do not match.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" ng-disabled="ac.registerForm.registerPassword.$viewValue != ac.registerForm.registerPasswordConfirmation.$viewValue" class="btn btn-login btn-success" >
+                    REGISTER
+                </button>
+            </div>
+        </form>
+        <div class="lcb-navigation">
+            <a class="loginRegistrationButton" href="" data-ma-action="login-switch" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>Sign in</span></a>
+            <a class="loginRegistrationButton" href="" data-ma-action="login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>Forgot Password</span></a>
+        </div>
+    </div>
+
+
+    <!-- Forgot Password -->
+    <div class="lc-block" id="l-forget-password">
+        <div class="card-header clearfix bgm-blue">
+            <h4 class="forgottenPasswordHeader">
+                Forgot your password?
+            </h4>
+        </div>
+        <form name="ac.forgottenPassForm" ng-submit="ac.submitEmail()">
+            <div class="lcb-form">
+                <p class="text-left">No worries! Enter your email and we'll send you a code to reset your password!</p>
+
+                <div class="input-group m-b-20" style="padding-bottom:35px">
+                    <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                    <div class="fg-line">
+                        <input type="text" class="form-control" ng-model="ac.forgottenEmail" placeholder="Email Address">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-login btn-success"><i class="zmdi zmdi-check"></i></button>
+            </div>
+        </form>
+
+        <div class="lcb-navigation">
+            <a class="loginRegistrationButton" href="" data-ma-action="login-switch" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>Sign in</span></a>
+            <a class="loginRegistrationButton" href="" data-ma-action="login-switch" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i><span>Register</span></a>
+        </div>
+    </div>
+</div>
+
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="preloader pls-blue">
+        <svg class="pl-circular" viewBox="25 25 50 50">
+            <circle class="plc-path" cx="50" cy="50" r="20" />
+        </svg>
+
+        <p>Please wait...</p>
+    </div>
+</div>
+
+
+
